@@ -1,0 +1,8 @@
+# core image of builder in main Dockerfile
+FROM python:3.7-slim AS base
+RUN apt-get update && apt-get install -y g++ gcc gettext wget git libsnappy-dev curl\
+    libdbusmenu-glib4 libdbusmenu-gtk3-4 libindicator3-7 libappindicator3-1 libnss3-dev\
+    libxslt-dev libxml2-dev libpam-dev libedit-dev xdg-utils libxcb-dri3-0 libx11-xcb1\
+    libgbm1 libdrm2 libasound2 fonts-liberation\
+    libpq-dev python-dev\
+    && rm -rf /var/lib/apt/lists/*

@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        stages: [commit]
+        language: system
+        entry: pipenv run isort --src school_bot -c
+        types: [python]
+
+      - id: flake8
+        name: flake8
+        stages: [commit]
+        language: system
+        entry: pipenv run flake8
+        types: [python]
+        args:
+          [
+            --exclude,
+            "*test_*.py,__init__.py",
+            --ignore,
+            "E722,E501,DJ01,DJ02,E252,F541,W504,PAI100,PAI201,PAI202,PAI203",
+          ]
